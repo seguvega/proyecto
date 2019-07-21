@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Personas</title>
+	</h:head>
+
+<h:body>
+	<center>
+		<h1>LOGIN DEFUNCIONES FETALES</h1>
+	</center>
+	<h:form >
+		<label><b>Correo:</b></label>
+		<h:inputText id="txtCorreo"
+			value="#{login.correo}" required="true"
+			label="Campo Requerido" maxlength="30" />
+		<h:messages for="txtCorreo" style="color: red" />
+		<br></br>
+		<br></br>
+		<label><b>Contraseña: </b></label>
+		<h:inputSecret id="txtContra" value="#{login.password}"
+			required="true" label="Campo Requerido" />
+		<h:messages for="txtContra" style="color: red" />
+
+		
+	<center>
+			<div>
+				<h:commandButton action="#{login.ver()}" value="Ingresar" />
+				<input type="reset" value="Borrar" />
+			</div>
+		</center>
+		
+</h:form>
+</h:body>
+</html>
