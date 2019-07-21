@@ -12,10 +12,14 @@ git diff 	//Diferencia entre el ultimo estado sobre los archivos ya confirmados 
 2 -> git remote add origin <link del repositorio> agregar el repositorio 
 	ls
 	git remote -v
+git push -u  	/// o  git push origin master
+
+--------------------------------------------------------------------------------------------------------------------------------
+git pull origin master 
+gir branch        ///Ver las ramas
 git fetch origin	 /// recupera toda la información enviada a ese servidor 
 			/// desde que lo clonaste (o desde la última vez que ejecutaste fetch)
 git reset --hard origin/master 		//apuntar a tu copia local 
-git push -u  	/// o  git push -u origin master
-git remote show origin
+git remote show origin ///o git remote -v  
 git checkout   	///Este comando reemplaza los cambios en tu 
 		//directorio de trabajo con el último contenido de HEAD. 
