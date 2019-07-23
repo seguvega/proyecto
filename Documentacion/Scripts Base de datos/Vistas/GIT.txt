@@ -1,0 +1,117 @@
+HP@Karla MINGW64 ~/Desktop
+$ cd funciones
+
+HP@Karla MINGW64 ~/Desktop/funciones
+$ git init
+Initialized empty Git repository in C:/Users/HP/Desktop/funciones/.git/
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ git remote add origin https://github.com/seguvega/proyecto_beta-.git
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ git remote -v
+origin  https://github.com/seguvega/proyecto_beta-.git (fetch)
+origin  https://github.com/seguvega/proyecto_beta-.git (push)
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ git pull origin master
+remote: Enumerating objects: 824, done.
+remote: Counting objects: 100% (824/824), done.
+remote: Compressing objects: 100% (747/747), done.
+remote: Total 824 (delta 50), reused 820 (delta 48), pack-reused 0
+Receiving objects: 100% (824/824), 12.82 MiB | 752.00 KiB/s, done.
+Resolving deltas: 100% (50/50), done.
+From https://github.com/seguvega/proyecto_beta-
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> origin/master
+Checking out files: 100% (719/719), done.
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ ls
+ CARGA_D_ASISTIDO_PORG1.txt         CG_D_LUGAR_OCURRENCIA.txt
+ CARGA_D_CAUSA_FETALG1.txt          CG_D_NACIONALIDAD.txt
+ CARGA_D_EDAD_G1.txt                CG_D_SEM_GEST_G02.txt
+ CARGA_D_ETNIAG1.txt                CG_D_UBIC_GEO.txt
+ CARGA_D_PROD_EMBARAZOG1.txt        Documentacion/
+ CARGA_D_TIEM_G1.txt               'Git Comandos.txt'
+ CARGA_TH_DEFUNCIONES_FETALES.txt   LICENSE
+ CARGA_TH_DF_G02.txt                Pag_Flask/
+ CG_D_AREA_RES_G02.txt              proyecto_v1/
+ CG_D_INSTRUCCION_G02.txt
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ ls
+ Documentacion/  'Git Comandos.txt'   LICENSE   Pag_Flask/   proyecto_v1/
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ git add Documentacion/Scripts\ Base\ de\ datos/
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   Documentacion/Scripts Base de datos/Funciones/CARGA_D_ASISTIDO_PORG1.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CARGA_D_CAUSA_FETALG1.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CARGA_D_EDAD_G1.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CARGA_D_ETNIAG1.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CARGA_D_PROD_EMBARAZOG1.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CARGA_D_TIEM_G1.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CARGA_TH_DEFUNCIONES_FETALES.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CARGA_TH_DF_G02.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CG_D_AREA_RES_G02.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CG_D_INSTRUCCION_G02.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CG_D_LUGAR_OCURRENCIA.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CG_D_NACIONALIDAD.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CG_D_SEM_GEST_G02.txt
+        new file:   Documentacion/Scripts Base de datos/Funciones/CG_D_UBIC_GEO.txt
+
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ git commit -m "Base de datos y funciones"
+[master 4a37ade] Base de datos y funciones
+ 14 files changed, 1102 insertions(+)
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CARGA_D_ASISTIDO_PORG1.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CARGA_D_CAUSA_FETALG1.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CARGA_D_EDAD_G1.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CARGA_D_ETNIAG1.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CARGA_D_PROD_EMBARAZOG1.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CARGA_D_TIEM_G1.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CARGA_TH_DEFUNCIONES_FETALES.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CARGA_TH_DF_G02.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CG_D_AREA_RES_G02.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CG_D_INSTRUCCION_G02.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CG_D_LUGAR_OCURRENCIA.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CG_D_NACIONALIDAD.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CG_D_SEM_GEST_G02.txt
+ create mode 100644 Documentacion/Scripts Base de datos/Funciones/CG_D_UBIC_GEO.txt
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ git commit -m "Base de datos y funciones" Documentacion/Scripts\ Base\ de\ datos/
+On branch master
+nothing to commit, working tree clean
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ git push origin master
+Enumerating objects: 21, done.
+Counting objects: 100% (21/21), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (18/18), done.
+Writing objects: 100% (19/19), 8.58 KiB | 516.00 KiB/s, done.
+Total 19 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/seguvega/proyecto_beta-.git
+   9b20ba0..4a37ade  master -> master
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ git pull origin master
+From https://github.com/seguvega/proyecto_beta-
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$ ^C
+
+HP@Karla MINGW64 ~/Desktop/funciones (master)
+$
