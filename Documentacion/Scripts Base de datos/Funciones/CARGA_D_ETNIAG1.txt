@@ -1,0 +1,25 @@
+create or replace FUNCTION carga_d_etniag1
+---REALIZADO POR: MOYON KARLA Y VELASCO SEBASTIAN
+return number
+is
+cursor cur_etnia is
+    SELECT * FROM tb_etnia
+    where lower (nombre_etnia) not in (select lower(nombre_etnia) from d_etnia)
+    order by id_etnia;
+    rv_etnia tb_etnia%ROWTYPE; --rv_etnia.id_etnia,rv_etnia.nombre_etnia
+    v_etnia_reg integer:= 0; 
+begin 
+
+open cur_etnia;   --carga_datos_etnia ejecuta el select
+fetch cur_etnia into rv_etnia; 
+
+while cur_etnia%found loop
+    insert into d_etnia (id_etnia,nombre_etnia)
+        values (rv_etnia.id_etnia,rv_etnia.nombre_etnia);
+    fetch cur_etnia into rv_etnia; 
+    v_etnia_reg := v_etnia_reg + 1; 
+end loop;
+close cur_etnia; 
+commit ;
+return (v_etnia_reg);
+end;

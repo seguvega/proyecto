@@ -1,0 +1,24 @@
+create or replace function CG_D_AREA_RES_G02
+RETURN NUMBER
+IS
+CURSOR CR_D_AREA_RES IS
+    SELECT * from area
+        where lower(DESCR_AREA) not in (
+            SELECT lower(DESCR_AREA) from D_AREA_RES)
+                order by area.id_area;
+    rv_area AREA%ROWTYPE;
+    v_area_reg integer:=0;
+BEGIN
+open CR_D_AREA_RES;
+fetch CR_D_AREA_RES into rv_area;
+
+while CR_D_AREA_RES%found loop
+    insert into d_area_res(id_area,descr_area)
+        values(rv_area.id_area,rv_area.descr_area);
+    fetch CR_D_AREA_RES into rv_area;
+    v_area_reg:=v_area_reg+1;
+end loop;
+close CR_D_AREA_RES;
+commit;
+return (v_area_reg);
+end;

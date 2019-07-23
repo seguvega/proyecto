@@ -1,0 +1,24 @@
+create or replace function CG_D_SEM_GEST_G02
+RETURN NUMBER
+IS
+CURSOR CR_D_SEM_GEST IS
+    SELECT * from SEM_GEST
+        where lower(SEM_GEST) not in (
+            SELECT lower(SEMANA) from D_SEM_GEST)
+                order by ID_SEM_GEST ;
+    rv_sm  SEM_GEST%ROWTYPE;
+    v_sm_reg integer:=0;
+BEGIN
+open CR_D_SEM_GEST;
+fetch CR_D_SEM_GEST into rv_sm;
+
+while CR_D_SEM_GEST%found loop
+    insert into  D_SEM_GEST(ID_SEM_GEST,SEMANA)
+        values(rv_sm.ID_SEM_GEST,rv_sm.SEM_GEST);
+    fetch CR_D_SEM_GEST into rv_sm;
+    v_sm_reg:=v_sm_reg+1;
+end loop;
+close CR_D_SEM_GEST;
+commit;
+return (v_sm_reg);
+end;

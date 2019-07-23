@@ -1,0 +1,26 @@
+create or replace FUNCTION carga_d_edad_g1
+---REALIZADO POR: MOYON KARLA Y VELASCO SEBASTIAN
+return number
+is
+cursor cur_edad is
+    SELECT * FROM edad
+    where lower (rang_edad) not in (select lower(rang_edad) from d_edad)
+    order by id_edad;
+    rv_edad edad%ROWTYPE; --rv_edad.id_edad,rv_edad.rang_edad
+    v_edad_reg integer:= 0; 
+
+begin 
+
+open cur_edad;   --carga_datos_etnia ejecuta el select
+fetch cur_edad into rv_edad; 
+
+while cur_edad%found loop
+    insert into d_edad (R1,R2)
+        values (rv_edad.id_edad,rv_edad.rang_edad);
+    fetch cur_edad into rv_edad; 
+    v_edad_reg := v_edad_reg + 1; 
+end loop;
+close cur_edad; 
+commit ;
+return (v_edad_reg);
+end;

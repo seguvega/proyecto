@@ -1,0 +1,25 @@
+create or replace FUNCTION carga_d_prod_embarazog1
+-----REALIZADO POR: MOYON KARLA Y VELASCO SEBASTIAN
+return number
+is
+cursor cur_prod_embarazo is
+    SELECT * FROM tb_prod_emb
+    where lower (def_pro) not in (select lower(def_pro) from d_prod_embarazo)
+    order by cod_pro;
+    rv_prod_embarazo tb_prod_emb%ROWTYPE; --rv_prod_embarazo.cod_pro,rv_prod_embarazo.def_pro
+    v_prod_emb_reg integer:= 0; 
+begin 
+
+open cur_prod_embarazo;   --carga_datos_etnia ejecuta el select
+fetch cur_prod_embarazo into rv_prod_embarazo; 
+
+while cur_prod_embarazo%found loop
+    insert into d_prod_embarazo (id_asistido,descripcion_prod_embarazo)
+        values (rv_prod_embarazo.cod_pro,rv_prod_embarazo.def_pro);
+    fetch cur_prod_embarazo into rv_prod_embarazo; 
+    v_prod_emb_reg :=v_prod_emb_reg + 1; 
+end loop;
+close cur_prod_embarazo;
+commit ;
+return (v_prod_emb_reg);
+end;

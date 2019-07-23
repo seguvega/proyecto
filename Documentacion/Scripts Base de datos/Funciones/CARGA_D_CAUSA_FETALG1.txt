@@ -1,0 +1,25 @@
+create or replace FUNCTION carga_d_causafetalg1
+---REALIZADO POR: MOYON KARLA Y VELASCO SEBASTIAN
+return number
+is
+cursor cur_causafetal is
+    SELECT * FROM tb_causa_fetal
+    where lower (def_causa) not in (select lower(def_causa) from d_causafetal)
+    order by cod_causa;
+    rv_causafetal tb_causa_fetal%ROWTYPE; --rv_causafetal.cod_causa,rv_causafetal.def_causa
+    v_causafetal_reg integer:= 0; 
+begin 
+
+open cur_causafetal;   --carga_datos_etnia ejecuta el select
+fetch cur_causafetal into rv_causafetal; 
+
+while cur_causafetal%found loop
+    insert into d_causafetal (id_causafetal,causa)
+        values (rv_causafetal.cod_causa,rv_causafetal.def_causa);
+    fetch cur_causafetal into rv_causafetal; 
+    v_causafetal_reg := v_causafetal_reg + 1; 
+end loop;
+close cur_causafetal;
+commit ;
+return (v_causafetal_reg);
+end;

@@ -1,0 +1,24 @@
+create or replace function CG_D_LUGAR_OCURRENCIA_G02
+RETURN NUMBER
+IS
+CURSOR CR_D_LUGAR_OCURRENCIA IS
+    SELECT * from TB_LUGAR_OCUR
+        where lower(DESCRIPCION_LUGAR) not in (
+            SELECT lower(DESCRIPCION_LUGAR) from D_LUGAR_OCURRENCIA)
+                order by ID_OCURRENCIA ;
+    rv_lg  TB_LUGAR_OCUR%ROWTYPE;
+    v_lg_reg integer:=0;
+BEGIN
+open CR_D_LUGAR_OCURRENCIA;
+fetch CR_D_LUGAR_OCURRENCIA into rv_lg;
+
+while CR_D_LUGAR_OCURRENCIA%found loop
+    insert into D_LUGAR_OCURRENCIA(ID_OCURRENCIA,DESCRIPCION_LUGAR)
+        values(rv_lg.ID_OCURRENCIA,rv_lg.DESCRIPCION_LUGAR);
+    fetch CR_D_LUGAR_OCURRENCIA into rv_lg;
+    v_lg_reg:=v_lg_reg+1;
+end loop;
+close CR_D_LUGAR_OCURRENCIA;
+commit;
+return (v_lg_reg);
+end;

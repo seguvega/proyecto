@@ -1,0 +1,24 @@
+create or replace function CG_D_NACIONALIDAD_G02
+RETURN NUMBER
+IS
+CURSOR CR_D_NACIONALIDAD IS
+    SELECT * from NAC_MAD
+        where lower(DES_NA) not in (
+            SELECT lower(NACIONALIDAD) from D_NACIONALIDAD)
+                order by id_nacionalidad;
+    rv_na  NAC_MAD%ROWTYPE;
+    v_na_reg integer:=0;
+BEGIN
+open CR_D_NACIONALIDAD;
+fetch CR_D_NACIONALIDAD into rv_na;
+
+while CR_D_NACIONALIDAD%found loop
+    insert into D_NACIONALIDAD(ID_NACIONALIDAD,NACIONALIDAD)
+        values(rv_na.ID_NACIONALIDAD,rv_na.DES_NA);
+    fetch CR_D_NACIONALIDAD into rv_na;
+    v_na_reg:=v_na_reg+1;
+end loop;
+close CR_D_NACIONALIDAD;
+commit;
+return (v_na_reg);
+end;

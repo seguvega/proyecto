@@ -1,0 +1,50 @@
+create or replace function carga_d_tiem_g1 
+--REALIZADO POR: Velasco Sebastian, Moyon Karla
+return number
+is 
+v_a int := 2016;
+v_fecha date; 
+v_fechaf date;
+v_trimestre int; 
+v_mes int; 
+v_año int;
+v_carga int;
+mesf int := 12;
+mesi int := 1;
+v_num_reg int;
+
+BEGIN 
+select count (anio) into v_carga 
+from d_tiempo 
+    where anio= v_a;
+
+if v_carga > 1 then 
+    return v_num_reg; 
+end if; 
+
+insert into d_tiempo(trimestre, mes, anio) values (null,null,v_a);
+insert into d_tiempo (trimestre, mes, anio)  values (1,null,v_a);
+insert into d_tiempo (trimestre, mes, anio) values (2,null,v_a);
+insert into d_tiempo (trimestre, mes, anio) values (3,null,v_a);
+insert into d_tiempo (trimestre, mes, anio) values (4,null,v_a);
+
+while mesi <= mesf loop 
+
+if mesi in (1,2,3)then 
+    v_trimestre :=1;
+elsif mesi in (4,5,6)then 
+    v_trimestre :=2;
+elsif mesi in (7,8,9)then
+    v_trimestre := 3;
+else 
+    v_trimestre := 4;
+end if;
+
+
+insert into d_tiempo(trimestre, mes, anio) values (v_trimestre,mesi,v_a);
+mesi := mesi+1;
+end loop;
+commit;
+
+end;
+

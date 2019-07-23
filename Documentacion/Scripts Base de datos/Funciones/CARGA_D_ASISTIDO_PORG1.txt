@@ -1,0 +1,25 @@
+create or replace FUNCTION carga_d_asistido_porg1
+---REALIZADO POR: MOYON KARLA Y VELASCO SEBASTIAN
+return number
+is
+cursor cur_asistido is
+    SELECT * FROM tb_asis_por
+    where lower (descripcion_asistencia) not in (select lower(descripcion_asistencia) from d_asistido_por)
+    order by id_asistido;
+    rv_asistido tb_asis_por%ROWTYPE; --rv_asistido.id_asistido,rv_asistido.descripcion_asistencia
+    v_asistido_reg integer:= 0; 
+begin 
+
+open cur_asistido;   --carga_datos_etnia ejecuta el select
+fetch cur_asistido into rv_asistido; 
+
+while cur_asistido%found loop
+    insert into d_asistido_por (id_asistido,descripcion_asistencia)
+        values (rv_asistido.id_asistido,rv_asistido.descripcion_asistencia);
+    fetch cur_asistido into rv_asistido; 
+    v_asistido_reg := v_asistido_reg + 1; 
+end loop;
+close cur_asistido; 
+commit ;
+return (v_asistido_reg);
+end;

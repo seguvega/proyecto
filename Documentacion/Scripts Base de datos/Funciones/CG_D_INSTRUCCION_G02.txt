@@ -1,0 +1,24 @@
+create or replace function CG_D_INSTRUCCION_G02
+RETURN NUMBER
+IS
+CURSOR CR_D_INSTRUCCION IS
+    SELECT * from TB_INSTRUCCION
+        where lower(OPCIONES_INSTRUCCION) not in (
+            SELECT lower(OPCIONES_INSTRUCCION) from D_INSTRUCCION)
+                order by NIV_INST ;
+    rv_in  TB_INSTRUCCION%ROWTYPE;
+    v_in_reg integer:=0;
+BEGIN
+open CR_D_INSTRUCCION;
+fetch CR_D_INSTRUCCION into rv_in;
+
+while CR_D_INSTRUCCION%found loop
+    insert into  D_INSTRUCCION(NIV_INST,OPCIONES_INSTRUCCION)
+        values(rv_in.NIV_INST,rv_in.OPCIONES_INSTRUCCION);
+    fetch CR_D_INSTRUCCION into rv_in;
+    v_in_reg:=v_in_reg+1;
+end loop;
+close CR_D_INSTRUCCION;
+commit;
+return (v_in_reg);
+end;

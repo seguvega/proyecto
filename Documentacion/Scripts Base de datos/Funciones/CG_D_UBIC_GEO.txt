@@ -1,0 +1,72 @@
+create or replace function CG_D_UBIC_GEO_G02
+RETURN NUMBER
+IS
+CURSOR CR_D_UBIC_GEO_P IS
+    SELECT COD_PROVINCIA, NOMBRE_PROVINCIA from TB_PROVINCIA
+        where lower(COD_PROVINCIA) not in (
+            SELECT lower(ID_PROVINCIA) from D_UBIC_GEO)
+                order by cod_provincia ;
+
+CURSOR CR_D_UBIC_GEO_C IS
+     SELECT P.COD_PROVINCIA, P.NOMBRE_PROVINCIA,C.COD_CANTON, C.NOMBRE_CANTON
+     from TB_PROVINCIA P, TB_CANTON C
+        where P.COD_PROVINCIA=C.COD_PROVINCIA
+        AND
+      (C.nombre_canton || p.nombre_provincia) not in (
+       SELECT (nombre_canton||nombre_provincia) from D_UBIC_GEO)
+                order by C.cod_provincia, c.cod_canton ;
+
+CURSOR CR_D_UBIC_GEO_PA IS
+     SELECT P.COD_PROVINCIA, P.NOMBRE_PROVINCIA,C.COD_CANTON, C.NOMBRE_CANTON, 
+     PA.COD_PARROQUIA, pa.nombre_parroquia
+     from TB_PROVINCIA P, TB_CANTON C, TB_PARROQUIA PA
+        where P.COD_PROVINCIA=C.COD_PROVINCIA
+        AND C.COD_PROVINCIA=PA.COD_PROVINCIA
+        AND C.COD_CANTON=PA.COD_CANTON
+        AND
+         (PA.nombre_parroquia||C.nombre_canton || P.nombre_provincia) not in (
+       SELECT (nombre_parroquia||nombre_canton||nombre_provincia)from D_UBIC_GEO)
+                order by C.cod_provincia, c.cod_canton,pa.cod_parroquia ;
+
+    rv_ub_p  CR_D_UBIC_GEO_P%ROWTYPE;
+    rv_ub_c CR_D_UBIC_GEO_C%ROWTYPE;
+    rv_ub_pa CR_D_UBIC_GEO_PA%ROWTYPE;
+    v_ub_reg integer:=0;
+
+BEGIN
+open CR_D_UBIC_GEO_P;
+fetch CR_D_UBIC_GEO_P into rv_ub_p;
+
+while CR_D_UBIC_GEO_P%found loop
+    insert into D_UBIC_GEO(ID_PROVINCIA,ID_CANTON,ID_PARROQUIA,nombre_provincia,NOMBRE_CANTON, NOMBRE_PARROQUIA)
+        values(rv_ub_p.COD_PROVINCIA,NULL,NULL,rv_ub_p.NOMBRE_PROVINCIA,NULL,NULL);
+    fetch CR_D_UBIC_GEO_P into rv_ub_p;
+    v_ub_reg:=v_ub_reg+1;
+end loop;
+close CR_D_UBIC_GEO_P;
+--------------------------FIN CARGA PROV-----------------------------------
+open CR_D_UBIC_GEO_C;
+fetch CR_D_UBIC_GEO_C into rv_ub_c;
+
+while CR_D_UBIC_GEO_C%found loop
+    insert into D_UBIC_GEO(ID_PROVINCIA,ID_CANTON,ID_PARROQUIA,nombre_provincia,NOMBRE_CANTON, NOMBRE_PARROQUIA)
+        values(rv_ub_c.COD_PROVINCIA,rv_ub_c.cod_canton,NULL,rv_ub_c.NOMBRE_PROVINCIA,rv_ub_c.nombre_canton,NULL);
+    fetch CR_D_UBIC_GEO_C into rv_ub_c;
+    v_ub_reg:=v_ub_reg+1;
+end loop;
+close CR_D_UBIC_GEO_C;
+-----------------FIN CARGA CANTON------------------
+open CR_D_UBIC_GEO_PA;
+fetch CR_D_UBIC_GEO_PA into rv_ub_pa;
+
+while CR_D_UBIC_GEO_PA%found loop
+    insert into D_UBIC_GEO(ID_PROVINCIA,ID_CANTON,ID_PARROQUIA,nombre_provincia,NOMBRE_CANTON, NOMBRE_PARROQUIA)
+        values(rv_ub_pa.COD_PROVINCIA,rv_ub_pa.cod_canton,rv_ub_pa.cod_parroquia,rv_ub_pa.NOMBRE_PROVINCIA,rv_ub_pa.nombre_canton,rv_ub_pa.nombre_parroquia);
+    fetch CR_D_UBIC_GEO_PA into rv_ub_pa;
+    v_ub_reg:=v_ub_reg+1;
+end loop;
+close CR_D_UBIC_GEO_PA;
+
+commit;
+return (v_ub_reg);
+end;
