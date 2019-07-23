@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<header>
+		<div class="contenedor">
+			<div id="marca">
+				<h1><span class="resalado"></span>Defunciones Fetales</h1>
+			</div>
+			<nav>
+
+			</nav>
+		</div>
+	</header>
+<head>
+
+     <meta charset="UTF-8">
+    <title>{{ titulo }}</title>
+    <h1 class="titulo">{{ titulo }}</h1>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+
+
+<ul id="nav", >
+
+
+  <li>
+      <a href="http://localhost:8008/proyecto/faces/index.xhtml"> <img src="/static/img/est.jpg" width="300" height="90">  </a>
+  </li>
+
+  <li class="mid">
+    <a href="http://127.0.0.1:5000/info "> <img src="http://png-4.findicons.com/files//icons/1580/devine_icons_part_2/128/home.png" /> </a>
+  </li>
+
+  <li>
+        <a href="https://github.com/seguvega/proyecto_beta- "> <img src="/static/img/gib.png"> </a>
+  </li>
+
+  <li>
+       <a href="http://127.0.0.1:5000/info "> <img src="/static/img/Integrante.jpg"> </a>
+  </li>
+</ul>
+
+</head>
+
+
+<body>
+    {% block body %}
+
+    {% endblock %}
+</body>
+
+
+</html>
