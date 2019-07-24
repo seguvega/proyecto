@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>VM2</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<!--  -->
+	<link rel="stylesheet" type="text/css" href="boton.css" />
+	<!--  -->
+</h:head>
+<h:body>
+	<header>
+	<div class="contenedor">
+		<div id="marca">
+			<h1>
+				<span class="resalado"></span>Defunciones Fetales
+			</h1>
+		</div>
+		<nav>
+		<ul>
+			<li class="actual"><a href="CerrarSesion.xhtml">Cerrar
+					sesión</a></li>
+		</ul>
+		</nav>
+	</div>
+	</header>
+
+	<h:form>
+
+		<!-- 		<p:growl id="msgs" showDetail="true" /> -->
+		<p:panel header="TOP DEFUNCIONES FETALES SEGUN LUGAR DE OCURRENCIA">
+			<h:selectOneRadio value="#{vista2.top}">
+				<f:selectItem itemValue="3" itemLabel="3" />
+				<f:selectItem itemValue="10" itemLabel="10" />
+				<f:selectItem itemValue="20" itemLabel="20" />
+			</h:selectOneRadio>
+
+
+			<h:commandButton actionListener="#{vista2.generar()}"
+				value="Registrar" class="boton" />
+			<br />
+			<br></br>
+			<p:dataTable value="#{vista2.vm}" var="us">
+
+				<p:column headerText="AÑO ">
+					<center>#{us.tiempo}</center>
+				</p:column>
+				<p:column headerText="PROVINCIA ">
+					<center>#{us.ubicacion}</center>
+				</p:column>
+				<p:column headerText="LUGAR OCURRENCIA">
+					<center>#{us.lugar}</center>
+				</p:column>
+				<p:column headerText="TOTAL">
+					<center>#{us.total}</center>
+				</p:column>
+
+			</p:dataTable>
+
+
+
+		</p:panel>
+		<h:commandButton action="otro.xhtml" value="VOLVER" class ="boton"/>
+	</h:form>
+</h:body>
+<footer> <b><p>UNIVERSIDAD POLITECNICA SALESIANA</p></b>
+<p>Desarrollado por:</p>
+<p>Sebastian Velasco, Karla Moyon,Ricardo Romo y Chrsitian Lasso</p>
+</footer>
+</html>

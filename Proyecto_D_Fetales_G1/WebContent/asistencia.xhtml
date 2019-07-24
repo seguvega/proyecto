@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>ASISTENCIA</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<!--  -->
+	<link rel="stylesheet" type="text/css" href="boton.css" />
+	<!--  -->
+</h:head>
+
+<h:body>
+
+	<header>
+	<div class="contenedor">
+		<div id="marca">
+			<h1>
+				<span class="resalado"></span>Defunciones Fetales
+			</h1>
+		</div>
+		<nav>
+		<ul>
+	
+			<li class="actual"><a href="CerrarSesion.xhtml">Cerrar sesión</a></li>
+		</ul>
+		</nav>
+	</div>
+	</header>
+	<h:form>
+<br></br>
+<br></br>
+		<label><b>Seleccionar año: </b></label>
+		<h:selectOneRadio value="#{asis.anio}">
+			<f:selectItem itemValue="2015" itemLabel="2015" />
+			<f:selectItem itemValue="2016" itemLabel="2016" />
+		</h:selectOneRadio>
+		<h:commandButton actionListener="#{asis.init()}"
+			value="Mostrar Grafico" />
+		<center>
+			<br />
+			<p:chart type="bar" model="#{asis.barModel}" style="height:300px" />
+		</center>
+
+		<hr align="left" />
+
+
+		<hr align="left" />
+		<h3>
+			<b>RESULTADO: </b>
+		</h3>
+		<center>
+			<table border="1">
+				<tr>
+					<th colspan="10" scope="col"><h1>
+							<b>Asistencia: </b>
+						</h1></th>
+				</tr>
+				<tr>
+					<td bgcolor="#3AE5F0"><b>Médico</b></td>
+					<td bgcolor="#F0A63A"><b>Obstetriz/ Obstetra </b></td>
+					<td bgcolor="#B5BD80"><b>Enfermero/a </b></td>
+					<td bgcolor="#5AA667"><b>Auxiliar de enfermería</b></td>
+					<td bgcolor="#85BD80"><b>Partero/a calificado/a</b></td>
+					<td bgcolor="#91A536"><b>Partero/a no calificado/a</b></td>
+					<td bgcolor="#8A538E"><b>otro </b></td>
+				</tr>
+
+				<tr>
+					<td>#{asis.asistido1}</td>
+					<td>#{asis.asistido2}</td>
+					<td>#{asis.asistido3}</td>
+					<td>#{asis.asistido4}</td>
+					<td>#{asis.asistido5}</td>
+					<td>#{asis.asistido6}</td>
+					<td>#{asis.asistido7}</td>
+				</tr>
+			</table>
+		</center>
+		<hr align="left" />
+
+		<center>
+			<h:commandButton action="otro.xhtml" value="VOLVER" class= "boton"/>
+		</center>
+	</h:form>
+</h:body>
+<footer>
+<p>
+	<b>UNIVERSIDAD POLITECNICA SALESIANA</b>
+</p>
+<p>
+	<b>Desarrollado por:</b>
+</p>
+<p>*Sebastian Velasco *Karla Moyon</p>
+<p>*Ricardo Romo *Christian Lasso</p>
+</footer>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<title>BloquearUuarios</title>
+<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<!--  -->
+<link rel="stylesheet" type="text/css" href="boton.css" />
+<!--  -->
+</head>
+<h:body>
+<header>
+		<div class="contenedor">
+			<div id="marca">
+				<h1>
+					<span class="resalado"></span>Defunciones Fetales
+				</h1>
+			</div>
+			<nav>
+				<ul>
+					<li class="actual"><a href="CerrarSesion.xhtml">Cerrar Sesión</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<br></br>
+	<br></br>
+	<br></br>
+	<h:form>
+		<center>
+			<h1>
+				<b>LO SIENTO! EN ESTE MOMENTO TE ENCUENTRAS BLOQUEADO...</b>
+			</h1>
+			<h:graphicImage value="/imagenes/bloqueado.png" height="200" width="300"></h:graphicImage>
+			</center>
+			<br></br>
+			<h:commandButton action="index.xhtml" value="VOLVER" class="boton" />
+		
+	</h:form>
+</h:body>
+<footer>
+	<b><p>UNIVERSIDAD POLITECNICA SALESIANA </p></b>
+	<p>Desarrollado por:</p>
+	<p>Sebastian Velasco, Karla Moyon,Ricardo Romo y Chrsitian Lasso</p>
+</footer>
+</html>

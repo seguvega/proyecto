@@ -1,0 +1,112 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<title>Registro</title>
+	<link rel="stylesheet" type="text/css" href="graf.css" />
+	<!--  -->
+	<link rel="stylesheet" type="text/css" href="boton.css" />
+	<!--  -->
+</h:head>
+
+<body>
+	<header>
+	<div class="contenedor">
+		<div id="marca">
+			<h1>
+				<span class="resalado"></span>Defunciones fetales
+			</h1>
+		</div>
+	</div>
+	</header>
+
+	<h:head>
+		<title>registro</title>
+		<script src="js.js"></script>
+	</h:head>
+
+	<h:body>
+
+
+	</h:body>
+
+
+</body>
+
+
+<h:form>
+
+	<div class="panel">
+		<center>
+			<p:panel header="Registro">
+
+				<p:messages />
+
+				<h:panelGrid>
+
+
+
+					<label><b>Identificacion</b></label>
+					<h:inputText id="txtIdentificacion"
+						value="#{registro.identificacion}" required="true"
+						requiredMessage="Ingrese su identificacion" maxlength="10" />
+					<h:messages for="txtIdentificacion" style="color: red" />
+		#{registro.mencedula}
+		
+		
+		<label><b>Nombre: </b></label>
+					<h:inputText id="txtNombres" value="#{registro.nombre}"
+						required="true" label="Campo Requerido"
+						requiredMessage="Ingrese su Nombre" />
+					<h:messages for="txtNombres" style="color: red" />
+
+
+
+					<label><b>Correo: </b></label>
+					<h:inputText id="txtCorreo" type="email" value="#{registro.correo}"
+						required="true" label="Campo Requerido"
+						requiredMessage="Ingrese su Correo"
+						validatorMessage="Correo invalido">
+						<f:validateRegex
+							pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					</h:inputText>
+					<h:messages for="txtCorreo" style="color: red" />
+					<h:outputScript>src="js.js"</h:outputScript>
+					<label>#{registro.correores}</label>
+
+					<br />
+
+
+					<label><b>Password: </b></label>
+					<h:inputSecret id="txtContraR" value="#{registro.contrasenia}"
+						minlength="6" required="true"
+						requiredMessage="Ingrese su password" />
+					<h:messages for="txtContraR" style="color: red" />
+		#{registro.mensajeContra}
+		<label><b>Nick: </b></label>
+					<h:inputText id="txtNick" value="#{registro.nick}" required="true"
+						requiredMessage="Ingrese su Nick" />
+					<h:messages for="txtNick" style="color: red" />
+					<br />
+					<label>#{registro.nickres}</label>
+
+				</h:panelGrid>
+
+				<h:commandButton action="#{registro.boton()}" value="Registrar" class ="boton" />
+				<input type="reset" value="Borrar" class ="boton"/>
+				
+			</p:panel>
+		</center>
+	</div>
+
+</h:form>
+<h:form>
+<h:commandButton action="menuAdm.xhtml" value="Index" class ="boton"/>
+</h:form>
+
+</html>

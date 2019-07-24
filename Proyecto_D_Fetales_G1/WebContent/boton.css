@@ -1,0 +1,18 @@
+
+	.boton{
+    FONT-SIZE: 10pt; 
+	FONT-FAMILY: Verdana ;
+	COLOR:WHITE; 
+	BACKGROUND-COLOR: black ; 
+	width: 100px ;
+	height: 40px ;
+	padding: 5px;
+	border-radius: 6px;
+	border: 2px solid #0016b0;
+	}
+	.boton:hover{
+	color: #1883ba;
+	backgroud-color: #ffffff;
+	}
+	
+	

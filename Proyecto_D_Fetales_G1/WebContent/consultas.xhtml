@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<head>
+<title>SOY un Titulo</title>
+<link rel="stylesheet" type="text/css" href="estilo.css" />
+</head>
+
+<body>
+<header>
+		<div class="contenedor">		
+			<div id="marca">
+				<h1><span class="resalado"></span>Defunciones Fetales</h1>
+			</div>
+			<nav>
+				<ul>
+					<li class="actual"><a href="*">Inicio</a></li>
+					<li class="actual"><a href="*">Registro</a></li>
+					<li class="actual"><a href="*">Login</a></li>
+					
+				</ul>
+			</nav>
+		</div>
+</header>
+<h:form>
+<!-- FALTA EDITAR NO SE LOS CAMPOS XD -->
+<p:dataTable  value="#{c_propietario.lista}" var="ver" rendered="#{c_propietario.lista.size() > 0}" style="width: 900px">
+                <p:column headerText="Cédula">
+                    <p:outputLabel value="#{ver.p.cedula}" />
+                </p:column>
+                <p:column headerText="Nombres">
+                    <p:inplace id="n" >
+                        <p:inputText value="#{ver.p.nombre}" required="true" label="text" />
+                    </p:inplace>
+                </p:column>
+            </p:dataTable>
+</h:form>
+</body>
+<footer>
+</footer>
+</html>

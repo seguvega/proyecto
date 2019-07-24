@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>USUARIOS</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<!--  -->
+	<link rel="stylesheet" type="text/css" href="boton.css" />
+	<!--  -->
+</h:head>
+<h:body>
+	<header>
+	<div class="contenedor">
+		<div id="marca">
+			<h1>
+				<span class="resalado"></span>Defunciones Fetales
+			</h1>
+		</div>
+		<nav>
+		<ul>
+			<li class="actual"><a href="CerrarSesion.xhtml">Cerrar
+					sesión</a></li>
+		</ul>
+		</nav>
+	</div>
+	</header>
+
+
+	<h:form>
+		<style type="text/css">
+.value {
+	font-weight: bold;
+}
+</style>
+		<p:growl id="msgs" showDetail="true" />
+		<p:panel header="USUARIOS" style="margin-bottom:10px;">
+
+			<p:dataTable value="#{usuarios.user}" var="us">
+
+				<p:column headerText="TIPO">
+#{us.tipo}
+</p:column>
+				<p:column headerText="NOMBRE">
+	#{us.nombre}
+	</p:column>
+				<p:column headerText="NICK">
+	#{us.nick}
+	</p:column>
+				<p:column headerText="ESTADO">
+	#{us.estado}
+	</p:column>
+				<p:column headerText="CORREO">
+	#{us.correo}
+	</p:column>
+				<p:column headerText="BLOQUEAR/DESBLOQUEAR">
+					<center>
+
+						<p>
+							<h:commandButton action="#{blok.accion(us)}" value="Bloquear/Desbloquear" class ="boton"/>
+						</p>
+					</center>
+				</p:column>
+				
+				<p:column headerText="ELIMINAR">
+					<center>
+
+						<p>
+							<h:commandButton action="#{blok.eliminar(us)}" value="Eliminar" class ="boton"/>
+						</p>
+					</center>
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+
+		<h:commandButton action="Usuarios.xhtml" value="Actualizar"  class ="boton"/>
+		<label>                </label>
+		<h:commandButton action="menuAdm.xhtml" value="MENU"  class ="boton"/>
+	</h:form>
+</h:body>
+<footer> <b><p>UNIVERSIDAD POLITECNICA SALESIANA</p></b>
+<p>Desarrollado por:</p>
+<p>Sebastian Velasco, Karla Moyon,Ricardo Romo y Chrsitian Lasso</p>
+</footer>
+</html>

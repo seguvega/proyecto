@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Personas</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<!--  -->
+	<link rel="stylesheet" type="text/css" href="boton.css" />
+	<!--  -->
+</h:head>
+
+<h:body>
+	<header>
+	<div class="contenedor">
+		<div id="marca">
+			<h1>
+				<span class="resalado"></span>Defunciones Fetales
+			</h1>
+		</div>
+		<nav>
+		<ul>
+			<li class="actual"><a href="CerrarSesion.xhtml">Cerrar sesión</a></li>
+		</ul>
+		</nav>
+	</div>
+	</header>
+	<h:form>
+		<h2>Tiempo:</h2>
+		<table>
+			<tr>
+				<td><label><b>Seleccionar año: </b></label> <h:selectOneRadio
+						value="#{madre.anio}">
+						<f:selectItem itemValue="2015" itemLabel="2015" />
+						<f:selectItem itemValue="2016" itemLabel="2016" />
+					</h:selectOneRadio></td>
+					
+				<td></td>
+				<td><label><b>Trimestre: </b></label> <h:selectOneMenu
+						value="#{madre.trimestre}">
+						<f:selectItem itemValue="#{null}" itemLabel="..Seleccione" />
+						<f:selectItem itemValue="1" itemLabel="1" />
+						<f:selectItem itemValue="2" itemLabel="2" />
+						<f:selectItem itemValue="3" itemLabel="3" />
+						<f:selectItem itemValue="4" itemLabel="4" />
+					</h:selectOneMenu></td>
+			</tr>
+		</table>
+
+		<hr align="left" />
+
+		<h2>Ubicación Geográfica</h2>
+		<label><b>Provincia: </b></label>
+		<h:selectOneMenu value="#{pr.pro}">
+			<f:selectItem itemValue="#{null}" itemLabel="..Seleccione" />
+			<f:selectItems value="#{pr.listProv}" />
+			<f:ajax listener="#{pr.lista_Can}" render="cbocan" />
+		</h:selectOneMenu>
+
+		<label><b>Canton: </b></label>
+		<h:selectOneMenu id="cbocan" value="#{pr.canton}">
+			<f:selectItem itemValue="#{null}" itemLabel="..Seleccione" />
+			<f:selectItems value="#{pr.liscant}" />
+		</h:selectOneMenu>
+		<hr align="left" />
+		<table>
+			<tr>
+				<td><label><b>Etnia:</b></label> <h:selectOneMenu
+						value="#{madre.etnia}">
+						<f:selectItem itemValue="#{null}" itemLabel="..Seleccione" />
+						<f:selectItems value="#{madre.etnialista}">
+						</f:selectItems>
+
+					</h:selectOneMenu></td>
+
+
+				<td><label><b>Sexo Feto:</b></label> <h:selectOneMenu
+						value="#{madre.sexo}">
+						<f:selectItem itemValue="#{null}" itemLabel="..Seleccione" />
+						<f:selectItems value="#{madre.list_sexo}">
+						</f:selectItems>
+
+					</h:selectOneMenu></td>
+
+				<td><label><b>Lugar Ocurrencia: </b></label> <h:selectOneMenu
+						value="#{madre.lugar}">
+						<f:selectItem itemValue="#{null}" itemLabel="..Seleccione" />
+						<f:selectItems value="#{madre.lug_ocurr}">
+						</f:selectItems>
+					</h:selectOneMenu></td>
+			</tr>
+		</table>
+		<br></br>
+		<br></br>
+		<center>
+			<div>
+				<h:commandButton actionListener="#{madre.etnia()}" value="Registrar" />
+				<input type="reset" value="Borrar" />
+			</div>
+		</center>
+
+		<hr align="left" />
+		<center>
+			<table>
+				<tr>
+					<td>
+						<table border="1">
+							<tr>
+								<th colspan="2" scope="col"><h3>
+										<b>Tiempo</b>
+									</h3></th>
+								<th colspan="2" scope="col"><h3>
+										<b>Ubicación Geográfica</b>
+									</h3></th>
+							</tr>
+
+							<tr>
+								<td>Año:</td>
+								<td>#{madre.anio}</td>
+
+								<td>Provincia:</td>
+								<td>#{pr.pro}</td>
+							</tr>
+
+							<tr>
+								<td>Trimestre:</td>
+								<td>#{madre.trimestre}</td>
+
+								<td>Canton:</td>
+								<td>#{pr.canton}</td>
+							</tr>
+						</table>
+					</td>
+					<td><h:graphicImage value="/imagenes/flecha.png" width="150"
+							height="100">
+						</h:graphicImage></td>
+					<td>
+						<table border="1">
+							<tr>
+								<th>Etnia</th>
+								<th>Sexo Feto</th>
+								<th>Lugar Ocurrencia</th>
+							</tr>
+							<tr>
+								<td>#{madre.etnia}</td>
+								<td>#{madre.sexo}</td>
+								<td>#{madre.lugar}</td>
+							</tr>
+
+							<tr>
+								<td>#{madre.sum()}</td>
+								<td>#{madre.sexoF()}</td>
+								<td>#{madre.sumlugar()}</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+			<hr align="left" />
+
+
+			<br></br>
+
+		</center>
+		<h:commandButton action="otro.xhtml" value="VOLVER" class="boton" />
+	</h:form>
+
+</h:body>
+<footer> <b><p>UNIVERSIDAD POLITECNICA SALESIANA</p></b>
+<p>Desarrollado por:</p>
+<p>Sebastian Velasco, Karla Moyon,Ricardo Romo y Chrsitian Lasso</p>
+</footer>
+</html>
+

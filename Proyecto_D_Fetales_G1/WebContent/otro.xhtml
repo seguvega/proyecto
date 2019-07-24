@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+
+<h:head>
+	<title>Defunciones Fetales</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<!--  -->
+</h:head>
+<h:body>
+	<header>
+	<div class="contenedor">
+		<div id="marca">
+			<h1>
+				<span class="resalado"></span>Defunciones Fetales
+			</h1>
+		</div>
+		<nav>
+		<ul>
+			<li class="actual"><a href="CerrarSesion.xhtml">Cerrar sesión</a></li>
+		</ul>
+		</nav>
+	</div>
+	</header>
+	<h:form>
+	<h1><b>Bienvenido #{login.n}</b></h1>
+		<center>
+	
+			<table>
+				<tr>
+					<td><br></br> <a href="consulta.xhtml">1. Consulta general</a>
+						<br></br> <br></br> <a href="sexo.xhtml">2. Gráficos sexo de
+							fetos fallecidos</a> <br></br> <br></br> <a href="trimestre.xhtml">3.
+							Gráficas % defunciones fetales por trimestre</a> <br></br> <br></br>
+						<a href="graficas.xhtml">4. Gráficas Mayor número de
+							defunciones fetales</a> <br></br> <br></br> <a
+						href="asistencia.xhtml">5. Gráficas Asistencia</a> <br></br> <br></br>
+						<a href="nivel_inst.xhtml">6. Gráficas según nivel de
+							instrucción</a> <br></br> <br></br> <a href="ne_cp.xhtml">7.
+							Gráficas Nivel de instrucción Vs Controles prenatales</a> <br></br>
+							<br></br> <a href="vista1.xhtml">8. Top Defunciones fetales Etnia</a>
+						<br></br>
+						<br></br> <a href="vista2.xhtml">9. Top Defunciones fetales Lugar Ocurrencia</a>
+						<br></br> <br></br>
+							</td>
+					<td><h:graphicImage value="/imagenes/Estadisticas.jpg"
+							width="400" height="300">
+						</h:graphicImage></td>
+				</tr>
+			</table>
+		</center>
+	</h:form>
+</h:body>
+
+<footer>
+
+	<b><p>UNIVERSIDAD POLITECNICA SALESIANA </p></b>
+	<p>Desarrollado por:</p>
+	<p>Sebastian Velasco, Karla Moyon,Ricardo Romo y Chrsitian Lasso</p>
+</footer>
+</html>

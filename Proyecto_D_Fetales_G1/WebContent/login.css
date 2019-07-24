@@ -1,0 +1,163 @@
+@charset "ISO-8859-1";
+body {
+	font: 15px Arial, Helvetica, sans-serif;
+	padding: 0;
+	margin: 0;
+	background: #f4f4f4;
+	min-height: 500px;
+	background-image: url('../imagenes/fon3.jpg') ;
+	
+	
+}
+
+.myPanelContent .ui-panel
+{
+	
+	border: black solid 1px !important;
+}
+
+/*Estilos*/
+
+.panel{
+	width: 30%;
+	margin: auto;
+	overflow: hidden;
+	
+}
+
+.contenedor{
+	width: 80%;
+	margin: auto;
+	overflow: hidden;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+.boton1{
+	height: 38px;
+	background: #e8491d;
+	border: 0;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #fff;
+}
+
+/*Encabezado*/
+
+ header{
+	background-color:#24282b;
+	color: #fff;
+	padding-top: 30px;
+	min-height: 70px;
+	border-bottom: 5px solid #1293d4;
+}
+
+header a{
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 16px;
+}
+
+header li{
+	float: left;
+	display: inline;
+	padding: 0 20px 0 20px;
+}
+
+header #marca{
+	float: left;
+}
+header #marca h1{
+	margin: 0;
+}
+header nav{
+	float: right;
+	margin-top: 10px;
+}
+header .resaltado, header .actual a{
+	color: #1293d4;
+	font-weight: bold;
+}
+header a:hover{
+	color: #ccc;
+	font-weight: bold;
+}
+
+/*Cabecera imagen*/
+
+ #cabecera{
+	min-height: 500px;
+	background-image: url('../img/Rum.jpeg') ;
+	text-align: center;
+	color: #fff;
+}
+
+#cabecera h1{
+	margin-top: 100px;
+	font-size: 55px;
+	margin-bottom: 10px;
+}
+
+#cabecera p{
+	font-size: 20px;
+}
+
+/*cajas*/
+
+#cajas{
+	margin: 20px;
+}
+#cajas .caja{
+	float: left;
+	text-align: center;
+	width: 30%;
+	padding: 10px;
+}
+#cajas .caja img{
+	width: 90px;
+}
+footer{
+	padding: 20px;
+	margin-top: 20px;
+	color: #fff;
+	background-color: #1293d4;
+	text-align: center;
+}
+
+
+boton{
+    FONT-SIZE: 18pt; 
+	FONT-FAMILY: Verdana ;
+	COLOR:WHITE; 
+	BACKGROUND-COLOR: black ; 
+	width: 265px ;
+	height: 80px ;
+	padding: 10px;
+	border-radius: 6px;
+	border: 2px solid #0016b0;
+	}
+	.boton:hover{
+	color: #1883ba;
+	backgroud-color: #ffffff;
+	}
+	
+	.volver {
+	text-decoration: none;
+	padding: 10px;
+	font-weight: 600 ;
+	FONT-SIZE: 18pt; 
+	FONT-FAMILY: Verdana ;
+	COLOR: #ffffff; 
+	background-color: #000000 ; 
+	border-radius: 6px;
+	border: 2px solid #0016b0;
+	}
+	.volver:hover{
+	color: #1883ba;
+	backgroud-color: #ffffff;
+	}
+	

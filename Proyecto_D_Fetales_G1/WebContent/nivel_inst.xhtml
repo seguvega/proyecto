@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>nivel de instruccion</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
+	<!--  -->
+	<link rel="stylesheet" type="text/css" href="boton.css" />
+	<!--  -->
+	
+</h:head>
+
+<h:body>
+<header>
+		<div class="contenedor">
+			<div id="marca">
+				<h1>
+					<span class="resalado"></span>Defunciones Fetales
+				</h1>
+			</div>
+			<nav>
+				<ul>
+					<li class="actual"><a href="CerrarSesion.xhtml">Cerrar sesión</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<h:form>
+		<br></br>
+		<br></br>
+
+	<center>
+		<br />
+		<p:chart type="bar" model="#{barras.barModel}" style="height:300px" />
+	</center>
+
+	<hr align="left" />
+	<h3>
+		<b>RESULTADO: </b>
+	</h3>
+	<center>
+		<table border="1">
+			<tr>
+				<th colspan="10" scope="col"><h1>
+						<b>Nivel de Instruccion </b>
+					</h1></th>
+			</tr>
+			<tr>
+				<td bgcolor="#3AE5F0"><b>Ninguno</b></td>
+				<td bgcolor="#F0A63A"><b>Centro de Alfabetización: </b></td>
+				<td bgcolor="#B5BD80"><b>Primaria </b></td>
+				<td bgcolor="#5AA667"><b>Secundaria </b></td>
+				<td bgcolor="#85BD80"><b>Educación básica </b></td>
+				<td bgcolor="#91A536"><b>Educación media/bachillerato </b></td>
+				<td bgcolor="#8A538E"><b>Ciclo post-bachillerato </b></td>
+				<td bgcolor="blue"><b>Superior </b></td>
+				<td bgcolor="#E3E315"><b>Postgrado </b></td>
+				<td bgcolor="red"><b>Se ignora </b></td>
+			</tr>
+
+			<tr>
+				<td>#{barras.nivel1}</td>
+				<td>#{barras.nivel2}</td>
+				<td>#{barras.nivel3}</td>
+				<td>#{barras.nivel4}</td>
+				<td>#{barras.nivel5}</td>
+				<td>#{barras.nivel6}</td>
+				<td>#{barras.nivel7}</td>
+				<td>#{barras.nivel8}</td>
+				<td>#{barras.nivel9}</td>
+				<td>#{barras.nivel10}</td>
+			</tr>
+		</table>
+	</center>
+
+	<hr align="left" />
+	<center>
+		<h:commandButton action="otro.xhtml" value="VOLVER" class ="boton" />
+	</center>
+	</h:form>
+</h:body>
+<footer>
+
+	<b><p>UNIVERSIDAD POLITECNICA SALESIANA </p></b>
+	<p>Desarrollado por:</p>
+	<p>Sebastian Velasco, Karla Moyon,Ricardo Romo y Chrsitian Lasso</p>
+</footer>
+</html>
