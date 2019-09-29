@@ -2,7 +2,7 @@ git init
 git config --global user.name "nombre de usuario"
 git config --global user.email "email@"
 git status
-git add -A 	// o git <add nombre del archivo
+git add -a 	// o git add nombre del archivo
 git commit -m " Descripcion " ubicacion del destino
 git log 	// Ver los commit
 git diff 	//Diferencia entre el ultimo estado sobre los archivos ya confirmados git diff --staged
